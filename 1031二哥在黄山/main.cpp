@@ -5,6 +5,7 @@
 using namespace std;
 
 int main(){
+	freopen("date.out", "w", stdout);
 	int n;
 	int path;
 	int i,j;
@@ -28,13 +29,13 @@ int main(){
 		}
 	}
 	int flag = 0;
-	int wave = 1000000;
+	int wave = 10000000;
 	int father[20000]={0};
 	for(s=min;s<=max;s++)
 	{
 		for(e=s;e<=max;e++){
-			//cout<<"---------------------------"<<endl;
-			//cout<<"start from "<<s<<" to "<<e<<endl;
+			cout<<"---------------------------"<<endl;
+			cout<<"start from "<<s<<" to "<<e<<endl;
 			for(i=0;i<=n-1;i++){
 				for(j=0;j<=n-1;j++){
 					visit[i][j] = 0;
@@ -42,13 +43,14 @@ int main(){
 					father[i*n+j] = 0;
 					if(map[i][j]>=s&&map[i][j]<=e){state[i][j] = 1;}
 					else {state[i][j] = 0;}
-					//cout<<state[i][j]<<" ";
+					cout<<state[i][j]<<" ";
 				}
-				//cout<<endl;
+				cout<<endl;
 			}
 			tail = 0;
 			head = 0;
 			queue[head++] = 0*n + 0;
+			visit[0][0] = 1;
 			while(tail<head){
 				row = queue[tail]/n;
 				col = queue[tail] - n*row;
@@ -85,19 +87,19 @@ int main(){
 			}	
 			if(flag){
 				//cout<<"the path is:"<<endl;
-				path = queue[tail];
-				while(path!=0){
+				//path = queue[tail];
+				//while(path!=0){
 					//cout<<"("<<(path/n)<<","<<(path-(path/n)*(n))<<")"<<" ";
-					path = father[path];
-				}
-				//cout<<endl;
-				//cout<<"wave is : "<<wave<<endl;
+				//	path = father[path];
+				//}
+				cout<<endl;
+				cout<<"wave is : "<<wave<<endl;
 			}
 			flag = 0;
-			//cout<<"-----------------------"<<endl;
-			//cout<<endl;
+			cout<<"-----------------------"<<endl;
+			cout<<endl;
 		}
 	}
 	cout<<wave;
-	//cout<<endl;
+	cout<<endl;
 }
