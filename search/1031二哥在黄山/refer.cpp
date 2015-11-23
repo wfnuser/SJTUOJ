@@ -12,7 +12,8 @@ bool bfs(int low,int);
 
 int main(){
     int i,j,high,low,max=-1,min=120;
-
+    freopen("input.dat","r",stdin);
+    //freopen("date2.out","w",stdout);
     cin>>n;
     for (i=1;i<=n;++i)
         for (j=1;j<=n;++j) {

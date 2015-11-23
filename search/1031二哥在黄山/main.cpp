@@ -5,12 +5,13 @@
 using namespace std;
 
 int main(){
-	freopen("date.out", "w", stdout);
+	//freopen("date.out", "w", stdout);
+	freopen("input.dat","r",stdin);
 	int n;
 	int path;
 	int i,j;
 	int map[111][111]={0};
-	int min,max;
+	int min = 110,max = 0;
 	int s,e;
 	int state[111][111]={0};
 	int queue[20000]={0};
@@ -34,8 +35,8 @@ int main(){
 	for(s=min;s<=max;s++)
 	{
 		for(e=s;e<=max;e++){
-			cout<<"---------------------------"<<endl;
-			cout<<"start from "<<s<<" to "<<e<<endl;
+			//cout<<"---------------------------"<<endl;
+			//cout<<"start from "<<s<<" to "<<e<<endl;
 			for(i=0;i<=n-1;i++){
 				for(j=0;j<=n-1;j++){
 					visit[i][j] = 0;
@@ -43,14 +44,16 @@ int main(){
 					father[i*n+j] = 0;
 					if(map[i][j]>=s&&map[i][j]<=e){state[i][j] = 1;}
 					else {state[i][j] = 0;}
-					cout<<state[i][j]<<" ";
+					//cout<<state[i][j]<<" ";
 				}
-				cout<<endl;
+				//cout<<endl;
 			}
 			tail = 0;
 			head = 0;
+			if (state[0][0] == 0 ) continue; 
 			queue[head++] = 0*n + 0;
 			visit[0][0] = 1;
+			flag = 0;
 			while(tail<head){
 				row = queue[tail]/n;
 				col = queue[tail] - n*row;
@@ -86,20 +89,24 @@ int main(){
 				tail++;	
 			}	
 			if(flag){
-				//cout<<"the path is:"<<endl;
+				////cout<<"the path is:"<<endl;
 				//path = queue[tail];
 				//while(path!=0){
-					//cout<<"("<<(path/n)<<","<<(path-(path/n)*(n))<<")"<<" ";
+					////cout<<"("<<(path/n)<<","<<(path-(path/n)*(n))<<")"<<" ";
 				//	path = father[path];
 				//}
-				cout<<endl;
-				cout<<"wave is : "<<wave<<endl;
+				//cout<<endl;
+				//cout<<"wave is : "<<wave<<endl;
 			}
 			flag = 0;
-			cout<<"-----------------------"<<endl;
-			cout<<endl;
+			//cout<<"-----------------------"<<endl;
+			//cout<<endl;
 		}
 	}
+	int gap;
+	if(map[0][0]<map[n-1][n-1]) gap = map[n-1][n-1] - map[0][0];
+	else gap = map[0][0] - map[n-1][n-1];
+	if(wave<gap) wave=gap;	
 	cout<<wave;
-	cout<<endl;
+	//cout<<endl;
 }
