@@ -14,8 +14,8 @@ void postorder(int a[],int b[],int root){
 
 int main(){
 	int n;
-	int a[30000];//编号
-	int b[30000];//序号
+	int a[300000];//编号
+	int b[300000];//序号
 	int ser;
 	int root;
 
