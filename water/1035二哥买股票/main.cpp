@@ -9,7 +9,7 @@ int c[20000];//input is serial output is order [3,2,1,0]
 int d[20000];//input is order output is serial after sort [3,2,1,0]
 int n;
 
-void qsort(int a[], int s, int e){
+void qsort(int *a, int s, int e){
 	if(s>=e) return;
 	int l=s;
 	int r=e;
@@ -113,6 +113,13 @@ int main(){
 		if(ch=='M'){
 			cin>>src>>tmn;
 			run(src-1,tmn);
+			//for(int i=0;i<=n-1;i++)
+			//	cout<<d[i]+1<<" ";
+			//cout<<endl;
+			//cout<<"output by order";
+			//for(int i=0;i<=n-1;i++)
+			//	cout<<b[i]+1<<" ";
+			//cout<<endl;
 		}
 		if(ch=='Q'){
 			cin>>r;
